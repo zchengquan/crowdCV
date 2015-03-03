@@ -120,7 +120,7 @@ def processBlockList(blockList, image):
 
 def processBlock(blockDimensions, image):
     '''Recognizes text in given area of image and returns a tuple (isImage, data)
-    where isImage[boolean] = True, if base64 image is present in data and,
+    where isImage = True, if base64 image is present in data and,
     isImage = False if data is text. data[string] is recognized text or base64 image,
     depending on processing result
     Arguments:
