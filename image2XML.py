@@ -51,7 +51,7 @@ def inputImage():
     Arguments:
         None
     Returns:
-        image, compund list with indexes [row][col][color][intensity]
+        an image, compund list with indexes [row][col][color][intensity]
         '''
 
     global args
@@ -72,8 +72,8 @@ def inputImage():
 def segmentIntoBlocks(image):
     '''Takes an image and returns detected text blocks.
     Arguments:
-        image, compund list with indexes [row][col][color][intensity]
-    Output:
+        image -- compund list with indexes [row][col][color][intensity]
+    Returns:
         list of tuple containing integer dimensions of bounding boxes:
         (left, top, width, height)'''
 
@@ -93,9 +93,10 @@ def segmentIntoBlocks(image):
 def cropImage(blockDimensions, image):
     '''Returns cropped input image according to given dimensions.
     Arguments:
-        image, compund list with indexes [row][col][color][intensity]
+        blockDimensions -- tuple containing integers (left,top,width,height)
+        image -- compund list with indexes [row][col][color][intensity]
     Returns:
-        image, compund list with indexes [row][col][color][intensity]'''
+        an image, compund list with indexes [row][col][color][intensity]'''
         
     x = blockDimensions[0]
     y = blockDimensions[1]
@@ -111,8 +112,8 @@ def processBlock(blockDimensions, image):
     isImage = False if data is text. data[string] is recognized text or base64 image, 
     depending on processing result
     Arguments: 
-        blockDimensions: tuple containing integers (left,top,width,height)
-        image: compund list with indexes [row][col][color][intensity]
+        blockDimensions -- tuple containing integers (left,top,width,height)
+        image -- compund list with indexes [row][col][color][intensity]
     Output: 
         tuple (isImage boolean, data) where isImage is boolean and data is string'''
 
@@ -123,9 +124,10 @@ def processBlock(blockDimensions, image):
 def saveXML(blockList):
     '''output blockList to XML file
     Arguments:
-        blockList: compund list containing two tuples:
-        [[(left,top,width,height),(isImage, data)], ... ]
-    Returns:None'''
+        blockList -- compund list containing two tuples [[(left,top,width,height),(isImage, data)], ... ]
+    Returns:
+        None'''
+
     global args
 
     #read 2nd command line argument
@@ -169,9 +171,9 @@ def getBlocksByHPU(image, blocks):
     '''Send given image and bouding boxes to humans to verify and return with 
     changes if required.
     Arguments:
-        image, compund list with indexes [row][col][color][intensity]
-        blocks, list of tuple containing integers (left, top, width, height)
-    Output: 
+        image -- compund list with indexes [row][col][color][intensity]
+        blocks -- list of tuple containing integers (left, top, width, height)
+    Output:
         list of tuple containing integers (left, top, width, height)'''
 
     # returning test value for now
@@ -180,7 +182,7 @@ def getBlocksByHPU(image, blocks):
 def getBlocksByCV(image):
     '''Compute bouding boxes around suspected text blocks in input image
     Arguments:
-        image, compund list with indexes [row][col][color][intensity]
+        image -- compund list with indexes [row][col][color][intensity]
     Output: 
         list of tuple containing integer dimensions (left, top, width, height)'''
 
