@@ -115,7 +115,7 @@ def processBlockList(blockList, image):
         blockDimensions = blockList[i]
 
         # reformat blockList item to contain block data
-        blockList[i] = [blockDimensions, processBlock(blockList[i], image)]
+        blockList[i] = (blockDimensions, processBlock(blockList[i], image))
 
     return blockList
 
