@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
 The program is distributed under the terms of the GNU General Public License version 3
