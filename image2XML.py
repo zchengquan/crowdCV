@@ -48,7 +48,6 @@ def image2XML():
 
 def inputImage():
     '''Get image file and return an RGB image (BGR actually).
-
     Arguments:
         None
     Returns:
@@ -72,7 +71,6 @@ def inputImage():
 
 def segmentIntoBlocks(image):
     '''Takes an image and returns detected text blocks.
-
     Arguments:
         image, compund list with indexes [row][col][color][intensity]
     Output:
@@ -94,7 +92,6 @@ def segmentIntoBlocks(image):
 
 def cropImage(blockDimensions, image):
     '''Returns cropped input image according to given dimensions.
-    
     Arguments:
         image, compund list with indexes [row][col][color][intensity]
     Returns:
@@ -113,7 +110,6 @@ def processBlock(blockDimensions, image):
     where isImage[boolean] = True, if base64 image is present in data and,
     isImage = False if data is text. data[string] is recognized text or base64 image, 
     depending on processing result
-
     Arguments: 
         blockDimensions: tuple containing integers (left,top,width,height)
         image: compund list with indexes [row][col][color][intensity]
@@ -126,7 +122,6 @@ def processBlock(blockDimensions, image):
 
 def saveXML(blockList):
     '''output blockList to XML file
-
     Arguments:
         blockList: compund list containing two tuples:
         [[(left,top,width,height),(isImage, data)], ... ]
@@ -173,7 +168,6 @@ def saveXML(blockList):
 def getBlocksByHPU(image, blocks):
     '''Send given image and bouding boxes to humans to verify and return with 
     changes if required.
-
     Arguments:
         image, compund list with indexes [row][col][color][intensity]
         blocks, list of tuple containing integers (left, top, width, height)
@@ -185,7 +179,6 @@ def getBlocksByHPU(image, blocks):
 
 def getBlocksByCV(image):
     '''Compute bouding boxes around suspected text blocks in input image
-
     Arguments:
         image, compund list with indexes [row][col][color][intensity]
     Output: 
