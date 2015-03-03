@@ -15,8 +15,14 @@ import os
 import argparse
 import cv2
 
+
+
 parser = argparse.ArgumentParser(formatter_class=argparse.RawDescriptionHelpFormatter, \
-                                description='-------------------------------------------------------\nCrowdsourced Offline Handwriting Recognition Prototype.\n-------------------------------------------------------\nConverts image into XML. Refer to readme for more information')
+description='\
+-------------------------------------------------------\n\
+Crowdsourced Offline Handwriting Recognition Prototype.\n\
+-------------------------------------------------------\n\
+Converts image into XML. Refer to readme for more information')
 parser.add_argument('-i', dest='input', metavar='', help='source file of type: bmp, jpg, jp2, png, pbm, pgm, ppm, sr, ras, tiff', required=True)
 parser.add_argument('-o', dest='output', metavar='', help='destination XML file storing recognized text, images and formatting')
 args = parser.parse_args()
