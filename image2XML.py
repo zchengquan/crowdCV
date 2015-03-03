@@ -33,15 +33,10 @@ def image2XML():
 
     # block/paragraph segmentation.
     blockList = segmentIntoBlocks(image)
-
-    # take each block, and process to add recognized text or base64 image data
-    for i in range(len(blockList)):
-            # save each block list tuple
-            blockDimensions = blockList[i]
-
-            # reformat blockList item to contain block data
-            blockList[i] = [blockDimensions, processBlock(blockList[i], image)]
-
+    
+    # take each block in blockList, and add recognized text or base64 image data
+    blockList = processBlockList(blockList, image)    
+    
     #convert to XML and save output
     saveXML(blockList)
     return
@@ -93,7 +88,7 @@ def segmentIntoBlocks(image):
 def cropImage(blockDimensions, image):
     '''Returns cropped input image according to given dimensions.
     Arguments:
-        blockDimensions -- tuple containing integers (left,top,width,height)
+        blockDimensions -- tuple containing integer block dimensions (left,top,width,height)
         image -- compund list with indexes [row][col][color][intensity]
     Returns:
         an image, compund list with indexes [row][col][color][intensity]'''
@@ -105,6 +100,23 @@ def cropImage(blockDimensions, image):
 
     # return sliced image
     return image[y : y + h, x : x + w]
+
+def processBlockList(blockList, image):
+    '''Take each block in blockList, and add recognized text or base64 image data.
+    Arguments:
+        blockList -- list of tuple containing integer block dimensions (left, top, width, height)
+        image -- compund list with indexes [row][col][color][intensity]
+    Returns:
+        blockList, compund list containing two tuples [[(left,top,width,height),(isImage, data)], ... ]'''
+                
+    for i in range(len(blockList)):
+        # save each block list tuple
+        blockDimensions = blockList[i]
+
+        # reformat blockList item to contain block data
+        blockList[i] = [blockDimensions, processBlock(blockList[i], image)]
+
+    return blockList
 
 def processBlock(blockDimensions, image):
     '''Recognizes text in given area of image and returns a tuple (isImage, data)
@@ -192,7 +204,7 @@ def getBlocksByCV(image):
     Arguments:
         image -- compund list with indexes [row][col][color][intensity]
     Output:
-        list of tuple containing integer dimensions (left, top, width, height)'''
+        list of tuple containing integer block dimensions (left, top, width, height)'''
 
     # returning test value for now
     return [(290, 23, 164, 124), (547, 82, 131, 35), (78, 135, 103, 37), (64, 210, 634, 258), (48, 477, 604, 287), (38, 776, 622, 156), (394, 909, 262, 85), (170, 944, 165, 49)]
