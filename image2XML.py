@@ -25,8 +25,8 @@ parser.add_argument('-o', dest='output', metavar='', help='destination XML file 
 args = parser.parse_args()
 
 def image2XML():
-    '''Recognizes text in given image and outputs strings,
-    unconverted segments and formatting data into an XML file.
+    '''Recognizes text in given image and outputs recognized text,
+    figures and formatting data into an XML file.
     If an XML file is not specified, the output is printed in list form.'''
 
     # input pre-processed image
