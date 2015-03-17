@@ -21,7 +21,7 @@ for AlgoName = AlgoList
     CostList(end+1) = temp1;
     AccuracyList(end+1) = temp2;
     LabelList{end+1} = AlgoName;
-    disp([datestr(now,formatOut), ': ended processing'])
+    disp([datestr(now,formatOut), ': finished processing dataset'])
 end
 
 % Get points for CPU+HPU protocol
@@ -30,7 +30,7 @@ disp([datestr(now,formatOut), ': started processing dataset with joint algorithm
 CostList(end+1) = temp1;
 AccuracyList(end+1) = temp2;
 LabelList{end+1} = strcat(JointAlgo,'+HPU');
-disp([datestr(now,formatOut), ': ended processing'])
+disp([datestr(now,formatOut), ': finished processing dataset'])
 
 % Get points for HPU protocol
 disp([datestr(now,formatOut), ': started processing dataset with HPU'])
@@ -38,7 +38,7 @@ disp([datestr(now,formatOut), ': started processing dataset with HPU'])
 CostList(end+1) = temp1;
 AccuracyList(end+1) = temp2;
 LabelList{end+1} = 'HPU';
-disp([datestr(now,formatOut), ': ended processing'])
+disp([datestr(now,formatOut), ': finished processing dataset'])
 
 % Output
 
