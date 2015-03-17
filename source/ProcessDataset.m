@@ -1,7 +1,7 @@
 function [Cost, Accuracy] = ProcessDataset(Protocol,Algorithm,InputTestSetDir,...
                             InputGroundTruthDir)
 
-% ProcessDataset() processes the given dataset using given alogrithm and 
+% ProcessDataset processes the given dataset using given alogrithm and 
 % returns cost and accuracy percentage.
 %
 %      Arguments:
@@ -44,7 +44,7 @@ switch Protocol
                 Cost = 308;
             end
     case 'HPU'
-        Accuracy = 99.3;
+        Accuracy = 97.3;
         Cost = 823;
 
 end
