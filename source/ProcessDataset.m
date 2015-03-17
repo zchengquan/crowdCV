@@ -18,6 +18,10 @@ function [Cost, Accuracy] = ProcessDataset(Protocol,Algorithm,InputTestSetDir,..
 %
 %   InputGroundTruthDir        Directory containing ground truth PNG images.
 
+% Initializing with negative values to imply error if value not assigned.
+Accuracy = -1;
+Cost = -1;
+
 switch Protocol
     case 'CPU'
         switch char(Algorithm)
