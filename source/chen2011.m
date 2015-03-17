@@ -1,5 +1,5 @@
 function [boundingBoxes,segmentedCharacterMask] = chen2011(I,varargin)
-% chen2011 find text regions in an image.
+% chen2011 finds text regions in an image.
 %
 %   boundingBoxes = chen2011(I) returns a list of bounding boxes
 %   containing text regions. It is specified as a M-by-4 matrix, where each
