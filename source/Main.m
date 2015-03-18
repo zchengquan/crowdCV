@@ -100,6 +100,6 @@ axis([xmin, xmax, ymin, ymax])
 for I = 1:size(CostList')
     text(CostList(I), AccuracyList(I), strcat({'  '}, LabelList{I}))
 end
-disp([datestr(now,formatOut), ':  scatter-plot generated'])
+disp([datestr(now,formatOut), ':  scatter-plot generated on Figure ',num2str(gcf)])
 
 end
