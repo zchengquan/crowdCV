@@ -8,7 +8,7 @@ This folder contains scripts to run given segmentation algorithms on the [Street
 
 * CPU+HPU - runs a state-of-the art algorithm on the dataset and takes human input to improve performance further and cost is the time spent by human(s).
 
-* HPU only - runs the algorithm on the dataset completely by human input. This will give an accuracy comparable to CPU+HPU but cost (time spent) will be significantly higher.
+* HPU only - runs the algorithm on the dataset completely by human input. According to hypothesis, this should give an accuracy comparable to CPU+HPU but cost (time spent) will be significantly higher.
 
 ##Usage:  
 The main script can be invoked through Matlab console or another script in the following format:
