@@ -16,6 +16,11 @@ function Main(DataSetPath, AlgoList, JointAlgo)
 %
 %   JointAlgo                  String specifying name of an algo to be used
 %                              with HPU
+%
+%
+%   -- Example --
+%   Main('D:\testset', {'someoldguy2002','someoldguy2007','chen2011'},'chen2011')
+%
 
 %% Initialize accuracy, cost and point label vectors
 CostList = [];
