@@ -30,6 +30,7 @@ Gives an output like this:
 	
 This is tested on Matlab 2014a with Computer Vision Toolbox included.
 
+Note: For convenience a small dataset miniSVHN is included for testing convenience. It contains 20 items only.
 
 ##Progress
 
