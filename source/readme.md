@@ -2,7 +2,13 @@
 
 CrowdCV is an experiment to plot accuracy and cost of computer vision tasks as human inputs are combined. The human input is termed Human Processing Unit (HPU) and models the collective human input.
 
-This folder contains scripts to evaluate state-of-the-art computer vision algorithms on the [Street View House Numbers](http://ufldl.stanford.edu/housenumbers/) dataset.
+This folder contains scripts to run given segmentation algorithms on the [Street View House Numbers](http://ufldl.stanford.edu/housenumbers/) dataset under the following protocols:
+
+* CPU only - runs given algorithms on the dataset, and evaluates for accuracy (assuming cost = 0)
+
+* CPU+HPU - runs a state-of-the art algorithm on the dataset and takes human input to improve performance further and cost is the time spent by human(s).
+
+* HPU only - runs the algorithm on the dataset completely by human input. This will give an accuracy comparable to CPU+HPU but cost (time spent) will be significantly higher.
 
 ##Usage:  
 The main script can be invoked through Matlab console or another script in the following format:
