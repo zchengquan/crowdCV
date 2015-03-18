@@ -3,7 +3,7 @@ function [Cost, Accuracy] = ProcessDataset(Protocol,Algorithm,DataSetPath)
 % ProcessDataset processes the given dataset using given alogrithm and 
 % returns cost and accuracy percentage.
 %
-%      Arguments:
+%   -- Arguments --
 %
 %   Protocol                   String specifying one of the processing protocols. 
 %                              Possible values: 'CPU', 'CPU+HPU' and 'HPU'
@@ -14,8 +14,6 @@ function [Cost, Accuracy] = ProcessDataset(Protocol,Algorithm,DataSetPath)
 %                              passed.
 %
 %   DataSetPath                Directory containing dataset
-%
-
 
 
 % Initializing with negative values to imply error if value not assigned.
