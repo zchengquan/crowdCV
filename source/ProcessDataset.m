@@ -1,5 +1,5 @@
 function [Cost, Accuracy] = ProcessDataset(Protocol,Algorithm,ImageList,GroundTruth)
-
+%%
 % ProcessDataset processes the given dataset using given alogrithm and 
 % returns cost and accuracy percentage.
 %
@@ -51,6 +51,22 @@ switch Protocol
         Accuracy = 97.3;
         Cost = 823;
 
+end
+    
+end
+
+function [value] = IsMatch(box1,box2)
+%% Checks match between two bounding boxes [x y width height]
+area_of_box1 = box1(3)*box1(4);
+area_of_box2 = box2(3)*box2(4);
+area_of_intersection = rectint(box1,box2);
+area_of_union = area_of_box1 + area_of_box2 - area_of_intersection;
+ratio_of_intersection = area_of_intersection/area_of_union;
+
+if ratio_of_intersection > 0.50
+    value = true;
+else
+    value = false;
 end
 
 end
