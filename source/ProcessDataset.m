@@ -55,6 +55,29 @@ end
     
 end
 
+function [BoundingBoxes] = GTBoundingBoxes(Image,GroundTruth)
+%% Returns ground truth bounding boxes for the given image
+% get image name from full file name
+[~,FileName,~] = fileparts(Image);
+
+% get corresponding serial no for digitStuct
+s = str2num(FileName);
+
+% init bounding box
+BoundingBoxes = [];
+
+for i = 1:length(GroundTruth(s).bbox)
+    x = GroundTruth(s).bbox(i).left;
+    y = GroundTruth(s).bbox(i).top;
+    w = GroundTruth(s).bbox(i).width;
+    h = GroundTruth(s).bbox(i).height;
+
+    % append to BoundingBoxes
+    BoundingBoxes = [BoundingBoxes;x,y,w,h];
+end
+
+end
+
 function [value] = IsMatch(box1,box2)
 %% Checks match between two bounding boxes [x y width height]
 area_of_box1 = box1(3)*box1(4);
