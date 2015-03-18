@@ -63,6 +63,13 @@ scatter(CostList, AccuracyList, 'fill')
 xlabel('Cost (seconds)');
 ylabel('Accuracy (%)');
 
+% Override axis
+xmin = 0;
+xmax = max(CostList) * 1.1; % Adds 10% margin
+ymin = 0;
+ymax = 100;
+axis([xmin, xmax, ymin, ymax])
+
 % Fill in labels
 for I = 1:size(CostList')
     text(CostList(I), AccuracyList(I), strcat({'  '}, LabelList{I}))
