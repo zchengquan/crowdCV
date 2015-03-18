@@ -42,7 +42,7 @@ end
 Files = dir([DataSetPath, '\*.png']);
 ImageList = sort_nat({Files.name});
 for i = 1:size(ImageList')
-    ImageList{i} = [DataSetPath,ImageList{i}];
+    ImageList{i} = [DataSetPath,'\',ImageList{i}];
 end
 
 EndTime = now;
