@@ -100,6 +100,7 @@ disp([datestr(EndTime,formatOut), ':  finished processing dataset in ', num2str(
 %% output
 
 % draw plot
+figure
 scatter(CostList, AccuracyList, 'fill')
 xlabel('Cost (seconds)');
 ylabel('Accuracy (%)');
