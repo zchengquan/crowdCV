@@ -1,7 +1,7 @@
 function Main(DataSetPath, AlgoList, JointAlgo)
 
 % Plots the Cost vs Accuracy of given algorithms, a chosen algorithm with HPU 
-% and only HPU to find cost and performance.
+% and only HPU.
 %
 %   -- Arguments --
 %
