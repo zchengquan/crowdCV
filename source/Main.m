@@ -32,7 +32,7 @@ ElapsedSeconds = 0;
 global formatOut
 formatOut = 'HH:MM:SS:FFF dd-mmm-yy';
 
-%% generate dataset image list
+%% generate dataset image file-name list
 StartTime = now;
 disp([datestr(StartTime,formatOut), ': *started dataset image list generation'])
 
@@ -40,8 +40,10 @@ if DataSetPath(end) == '\'
     DataSetPath = DataSetPath(1:end-1);
 end
 Files = dir([DataSetPath, '\*.png']);
-global FileNames
-FileNames = sort_nat({Files.name});
+ImageList = sort_nat({Files.name});
+for i = 1:size(ImageList')
+    ImageList{i} = [DataSetPath,ImageList{i}];
+end
 
 EndTime = now;
 ElapsedSeconds = (EndTime-StartTime) * 24 * 60 * 60;
@@ -50,7 +52,6 @@ disp([datestr(EndTime,formatOut), ':  finished dataset image list generation in 
 %% load ground truth file
 StartTime = now;
 disp([datestr(StartTime,formatOut), ': *started loading ground truth file'])
-global digitStruct
 load([DataSetPath '\digitStruct.mat'], '-mat')
 EndTime = now;
 ElapsedSeconds = (EndTime-StartTime) * 24 * 60 * 60;
@@ -61,7 +62,7 @@ for AlgoName = AlgoList
     StartTime = now;
     disp([datestr(StartTime,formatOut), ': *started processing dataset with ', AlgoName{1}, ' algorithm'])
  
-    [temp1, temp2] = ProcessDataset('CPU', str2func(AlgoName{1}), DataSetPath);
+    [temp1, temp2] = ProcessDataset('CPU', str2func(AlgoName{1}), ImageList, digitStruct);
     CostList(end+1) = temp1;
     AccuracyList(end+1) = temp2;
     LabelList{end+1} = AlgoName;
@@ -75,7 +76,7 @@ end
 %% get points for CPU+HPU protocol
 StartTime = now;
 disp([datestr(StartTime,formatOut), ': *started processing dataset with joint algorithm ', JointAlgo, '+HPU'])
-[temp1, temp2] = ProcessDataset('CPU+HPU', str2func(JointAlgo), DataSetPath);
+[temp1, temp2] = ProcessDataset('CPU+HPU', str2func(JointAlgo), ImageList, digitStruct);
 CostList(end+1) = temp1;
 AccuracyList(end+1) = temp2;
 LabelList{end+1} = strcat(JointAlgo,'+HPU');
@@ -87,7 +88,7 @@ disp([datestr(EndTime,formatOut), ':  finished processing dataset in ', num2str(
 %% get points for HPU protocol
 StartTime = now;
 disp([datestr(now,formatOut), ': *started processing dataset with HPU'])
-[temp1, temp2] = ProcessDataset('HPU', '', DataSetPath);
+[temp1, temp2] = ProcessDataset('HPU', '', ImageList, digitStruct);
 CostList(end+1) = temp1;
 AccuracyList(end+1) = temp2;
 LabelList{end+1} = 'HPU';
@@ -111,8 +112,8 @@ ymax = 100;
 axis([xmin, xmax, ymin, ymax])
 
 % fill in labels
-for I = 1:size(CostList')
-    text(CostList(I), AccuracyList(I), strcat({'  '}, LabelList{I}))
+for i = 1:size(CostList')
+    text(CostList(i), AccuracyList(i), strcat({'  '}, LabelList{i}))
 end
 disp([datestr(now,formatOut), ':  scatter-plot generated on Figure ',num2str(gcf)])
 
