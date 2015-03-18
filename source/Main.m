@@ -1,4 +1,4 @@
-function Main(TestImageSetPath, GroundTruthPath)
+function Main(DataSetPath)
 
 % Enter list of CPU algorithm files/functions as cells.
 AlgoList = {'someoldguy2002','someoldguy2007','chen2011'};
@@ -17,7 +17,7 @@ disp([datestr(now,formatOut), ': begin program'])
 % Get points for CPU protocol
 for AlgoName = AlgoList
     disp([datestr(now,formatOut), ': started processing dataset with ', AlgoName{1}, ' algorithm'])
-    [temp1, temp2] = ProcessDataset('CPU', str2func(AlgoName{1}), TestImageSetPath, GroundTruthPath);
+    [temp1, temp2] = ProcessDataset('CPU', str2func(AlgoName{1}), DataSetPath);
     CostList(end+1) = temp1;
     AccuracyList(end+1) = temp2;
     LabelList{end+1} = AlgoName;
@@ -26,7 +26,7 @@ end
 
 % Get points for CPU+HPU protocol
 disp([datestr(now,formatOut), ': started processing dataset with joint algorithm ', JointAlgo, '+HPU'])
-[temp1, temp2] = ProcessDataset('CPU+HPU', str2func(JointAlgo), TestImageSetPath, GroundTruthPath);
+[temp1, temp2] = ProcessDataset('CPU+HPU', str2func(JointAlgo), DataSetPath);
 CostList(end+1) = temp1;
 AccuracyList(end+1) = temp2;
 LabelList{end+1} = strcat(JointAlgo,'+HPU');
@@ -34,7 +34,7 @@ disp([datestr(now,formatOut), ': finished processing dataset'])
 
 % Get points for HPU protocol
 disp([datestr(now,formatOut), ': started processing dataset with HPU'])
-[temp1, temp2] = ProcessDataset('HPU', '', TestImageSetPath, GroundTruthPath);
+[temp1, temp2] = ProcessDataset('HPU', '', DataSetPath);
 CostList(end+1) = temp1;
 AccuracyList(end+1) = temp2;
 LabelList{end+1} = 'HPU';

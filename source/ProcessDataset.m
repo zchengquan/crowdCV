@@ -1,5 +1,4 @@
-function [Cost, Accuracy] = ProcessDataset(Protocol,Algorithm,InputTestSetDir,...
-                            InputGroundTruthDir)
+function [Cost, Accuracy] = ProcessDataset(Protocol,Algorithm,DataSetPath)
 
 % ProcessDataset processes the given dataset using given alogrithm and 
 % returns cost and accuracy percentage.
@@ -14,9 +13,10 @@ function [Cost, Accuracy] = ProcessDataset(Protocol,Algorithm,InputTestSetDir,..
 %                              boxes. In case of HPU, an empty string may be
 %                              passed.
 %
-%   InputTestSetDir            Directory containing test PNG images.
+%   DataSetPath                Directory containing dataset
 %
-%   InputGroundTruthDir        Directory containing ground truth PNG images.
+
+
 
 % Initializing with negative values to imply error if value not assigned.
 Accuracy = -1;
