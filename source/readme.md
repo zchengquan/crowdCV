@@ -54,6 +54,6 @@ Output:
 
 ![Screen-shot](./SampleOutputChen.png)
 
-Works well when on tuning parameters such as text polarity and size range. However an ideal algorithm should just take an image and return an array of bounding boxes.
+Works well on tuning parameters such as text polarity and size range. However an ideal algorithm should just take an image and return an array of bounding boxes.
 
 * More documentation will be added!
