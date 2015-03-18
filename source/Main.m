@@ -1,10 +1,26 @@
-function Main(DataSetPath)
+function Main(DataSetPath, AlgoList, JointAlgo)
+
+% Plots the Cost vs Accuracy of given algorithms, a chosen algorithm + HPU 
+% and HPU to find cost and performance.
+%
+%   -- Arguments --
+%
+%   DataSetPath                String specifying path of the dataset.  
+%                              Dataset must contain PNG test files and the
+%                              digitStruct.mat file containing ground
+%                              truth.
+%
+%   AlgoList                   A cell array of strings containing names of
+%                              algorithms that will be used to process to the
+%                              dataset.
+%
+%   JointAlgo                  String specifying name of an algo to be used
+%                              with HPU
 
 % Enter list of CPU algorithm files/functions as cells.
-AlgoList = {'someoldguy2002','someoldguy2007','chen2011'};
-
+%AlgoList = {'someoldguy2002','someoldguy2007','chen2011'};
 % Set CPU algorithm to be used in CPU+HPU joint algorithm
-JointAlgo = 'chen2011';
+%JointAlgo = 'chen2011';
 
 % Initialize accuracy, cost and point label vectors
 CostList = [];
