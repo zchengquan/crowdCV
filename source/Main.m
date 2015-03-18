@@ -42,6 +42,14 @@ EndTime = now;
 ElapsedSeconds = (EndTime-StartTime) * 24 * 60 * 60;
 disp([datestr(EndTime,formatOut), ':  finished loading ground truth file in ', num2str(ElapsedSeconds), ' seconds'])
 
+% load files list
+if DataSetPath(end) == '\' 
+    DataSetPath = DataSetPath(1:end-1);
+end
+Files = dir([DataSetPath, '\*.png']);
+global FileNames
+FileNames = sort_nat({Files.name});
+
 %% Get points for CPU protocol by iterating through list of algorithms
 for AlgoName = AlgoList
     StartTime = now;
