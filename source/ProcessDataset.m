@@ -138,7 +138,7 @@ for j = 1:NumRows2
     flag = false;
     for i = 1:NumRows1
         % If there's at least 1 match in Matrix 1 for a row in Matrix 2, set flag
-        if BoxMatrix2(j,:)==BoxMatrix1(i,:)%IsMatch(BoxMatrix1(i1,:),BoxMatrix2(i2,:))
+        BoxMatch(BoxMatrix1(i1,:),BoxMatrix2(i2,:))
             flag = true;
         end
     end
