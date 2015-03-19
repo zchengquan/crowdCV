@@ -45,12 +45,10 @@ switch Protocol
             case 'chen2011'
                 Accuracy = 98.5;
                 Cost = 308;
-            end
+        end
     case 'HPU'
-        
-        Accuracy = 97.3;
-        Cost = 823;
-
+        Accuracy = 96;
+        Cost = 821;
 end
     
 end
@@ -78,7 +76,7 @@ end
 
 end
 
-function [value] = IsMatch(box1,box2)
+function [value] = BoxMatch(box1,box2)
 %% Checks match between two bounding boxes [x y width height]
 area_of_box1 = box1(3)*box1(4);
 area_of_box2 = box2(3)*box2(4);
