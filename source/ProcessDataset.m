@@ -47,6 +47,33 @@ switch Protocol
                 Cost = 308;
         end
     case 'HPU'
+        %{
+        figure
+        title('Draw bounding box')
+        ImageNum = 1;
+        AppendBox = false;
+        while ImageNum<length(ImageList)
+            imshow(ImageList{ImageNum})
+            if AppendBox == true
+                userbbox = [userbbox;getrect()];
+            else
+                userbbox = getrect();
+            end    
+            choice = questdlg('','Submit?','Next Image', 'Draw More', 'Draw Again','Next Image');
+            switch choice
+                case 'Next Image'
+                    ImageNum = ImageNum+1;
+                    AppendBox = false;
+                case 'Draw More'
+                    AppendBox = true;
+                case 'Draw Again'
+                    AppendBox = false;
+            end
+        end
+        groundbbox = GTBoundingBoxes(ImageList{1}, GroundTruth)
+        userbbox
+        a = BoxMatch(userbbox, groundbbox)
+        %}
         Accuracy = 96;
         Cost = 821;
 end
