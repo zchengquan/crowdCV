@@ -103,6 +103,64 @@ end
 
 end
 
+function [result] = BoxesMatch(BoxMatrix1, BoxMatrix2)
+%% check match of bounding box matrices regardless of order
+Check1 = false;
+Check2 = false;
+
+[NumRows1,~] = size(BoxMatrix1);
+[NumRows2,~] = size(BoxMatrix1);
+
+% Check 1: Each row in BoxMatrix1 should have a match in BoxMatrix2
+MatchingRowsCount = 0;
+for i = 1:NumRows1
+    flag = false;
+    for j = 1:NumRows2
+        % If there's at least 1 match in Matrix2 for a row in Matrix 1, set flag
+        if BoxMatrix1(i,:)==BoxMatrix2(j,:)%IsMatch(BoxMatrix1(i1,:),BoxMatrix2(i2,:))
+            flag = true;
+        end
+    end
+    % if flag was set, increment counter
+    if flag == true
+        MatchingRowsCount = MatchingRowsCount + 1;
+    end
+end
+
+% if match count equals number of rows in matrix 1
+if MatchingRowsCount == size(BoxMatrix1)
+    Check1 = true;
+end
+
+% Check 2: Each row in BoxMatrix2 should have a match in BoxMatrix1
+MatchingRowsCount = 0;
+for j = 1:NumRows2
+    flag = false;
+    for i = 1:NumRows1
+        % If there's at least 1 match in Matrix 1 for a row in Matrix 2, set flag
+        if BoxMatrix2(j,:)==BoxMatrix1(i,:)%IsMatch(BoxMatrix1(i1,:),BoxMatrix2(i2,:))
+            flag = true;
+        end
+    end
+    % if flag was set, increment counter
+    if flag == true
+        MatchingRowsCount = MatchingRowsCount + 1;
+    end
+end
+
+% if match count equals number of rows in matrix 2
+if MatchingRowsCount == size(BoxMatrix2)
+    Check2 = true;
+end
+
+% check if the two checks passed
+if Check1 && Check2;
+    result = true;
+else
+    result = false;
+end
+end
+
 function [value] = BoxMatch(box1,box2)
 %% Checks match between two bounding boxes [x y width height]
 area_of_box1 = box1(3)*box1(4);
@@ -116,5 +174,7 @@ if ratio_of_intersection > 0.50
 else
     value = false;
 end
+
+
 
 end
