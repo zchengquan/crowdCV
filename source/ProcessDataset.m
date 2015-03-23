@@ -117,7 +117,7 @@ for i = 1:NumRows1
     flag = false;
     for j = 1:NumRows2
         % If there's at least 1 match in Matrix2 for a row in Matrix 1, set flag
-        if BoxMatrix1(i,:)==BoxMatrix2(j,:)%IsMatch(BoxMatrix1(i1,:),BoxMatrix2(i2,:))
+        if BoxMatch(BoxMatrix1(i,:),BoxMatrix2(j,:))
             flag = true;
         end
     end
@@ -138,7 +138,7 @@ for j = 1:NumRows2
     flag = false;
     for i = 1:NumRows1
         % If there's at least 1 match in Matrix 1 for a row in Matrix 2, set flag
-        BoxMatch(BoxMatrix1(i1,:),BoxMatrix2(i2,:))
+        if BoxMatch(BoxMatrix2(j,:),BoxMatrix1(i,:))
             flag = true;
         end
     end
@@ -159,6 +159,7 @@ if Check1 && Check2;
 else
     result = false;
 end
+
 end
 
 function [value] = BoxMatch(box1,box2)
@@ -174,7 +175,5 @@ if ratio_of_intersection > 0.50
 else
     value = false;
 end
-
-
 
 end
