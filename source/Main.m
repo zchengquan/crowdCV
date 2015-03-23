@@ -100,7 +100,7 @@ disp([datestr(EndTime,formatOut), ':  finished processing dataset in ', num2str(
 %% output
 
 % draw plot
-figure
+FinalPlot = figure;
 scatter(CostList, AccuracyList, 'fill')
 xlabel('Cost (seconds)');
 ylabel('Accuracy (%)');
@@ -116,6 +116,6 @@ axis([xmin, xmax, ymin, ymax])
 for i = 1:size(CostList')
     text(CostList(i), AccuracyList(i), strcat({'  '}, LabelList{i}))
 end
-disp([datestr(now,formatOut), ':  scatter-plot generated on Figure ',num2str(gcf)])
+disp([datestr(now,formatOut), ':  scatter-plot generated on Figure ',num2str(FinalPlot.Number)])
 
 end
