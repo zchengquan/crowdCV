@@ -26,7 +26,6 @@ function Main(DataSetPath, AlgoList, JointAlgo)
 CostList = [];
 AccuracyList = [];
 LabelList = [];
-ElapsedSeconds = 0;
 
 %% set time format
 global formatOut
